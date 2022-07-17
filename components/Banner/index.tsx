@@ -10,7 +10,7 @@ export const Banner = () => {
       <Swiper
         slidesPerView={1}
         autoplay={{
-          delay: 1000,
+          delay: 2000,
           disableOnInteraction: false,
         }}
         modules={[Autoplay]}
