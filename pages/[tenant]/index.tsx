@@ -3,7 +3,7 @@ import styles from "./../../styles/Home.module.css";
 
 const Home = () => {
     const handleSearch = (searchValue: string) => [
-        console.log(`Voçe esta buscando por: ${searchValue}`),
+        console.log(`Vc esta buscando por: ${searchValue}`),
     ];
 
     return (
