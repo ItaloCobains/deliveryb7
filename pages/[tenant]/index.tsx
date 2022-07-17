@@ -13,9 +13,17 @@ const Home = () => {
                             O que deseja para hoje ?
                         </div>
                     </div>
-                    <div className={styles.headerTopRight}></div>
+                    <div className={styles.headerTopRight}>
+                        <div className={styles.MenuBottom}>
+                            <div className={styles.menuButtomLine}></div>
+                            <div className={styles.menuButtomLine}></div>
+                            <div className={styles.menuButtomLine}></div>
+                        </div>
+                    </div>
                 </div>
-                <div className={styles.headerBottom}>Busca</div>
+                <div className={styles.headerBottom}>
+                    ...
+                </div>
             </header>
         </div>
     );

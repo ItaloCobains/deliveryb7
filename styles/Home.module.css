@@ -8,6 +8,9 @@
 }
 
 .headerTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .headerTopLeft {
@@ -17,6 +20,7 @@
     font-weight: 500;
     font-style: 24px;
     color: #1b1b1b;
+    margin-bottom: 8px;
 }
 
 .headerSubTitle {
@@ -26,6 +30,19 @@
 }
 
 .headerTopRight {
+}
+
+.MenuBottom {
+    width: 18px;
+    height: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.menuButtomLine {
+    background-color: #f89400;
+    height: 2px;
 }
 
 .headerBottom {
