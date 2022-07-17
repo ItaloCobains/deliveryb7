@@ -7,7 +7,7 @@ const Home = () => {
                 <div className={styles.headerTop}>
                     <div className={styles.headerTopLeft}>
                         <div className={styles.headerTitle}>
-                            Seja Bem-Vindo (a) 👋
+                            Seja Bem Vindo (a) 👋
                         </div>
                         <div className={styles.headerSubTitle}>
                             O que deseja para hoje ?
