@@ -6,3 +6,27 @@
     background-color: #f9f9fb;
     padding: 50px 24px 40px 24px;
 }
+
+.headerTop {
+}
+
+.headerTopLeft {
+}
+
+.headerTitle {
+    font-weight: 500;
+    font-style: 24px;
+    color: #1b1b1b;
+}
+
+.headerSubTitle {
+    font-weight: 400;
+    font-style: 16px;
+    color: rgba(151, 151, 151, 0.8);
+}
+
+.headerTopRight {
+}
+
+.headerBottom {
+}
