@@ -3,10 +3,11 @@ import styles from "./../../styles/Home.module.css";
 import { Banner } from "../../components/Banner"
 import { SearchInput } from "../../components/SearchInput";
 import { ProductItem } from '../../components/ProductItem';
-import { useApi } from "../../libs/useApi";
+import { getTenantResponse, useApi } from "../../libs/useApi";
+import { GetServerSideProps } from "next";
 
 
-const Home = () => {
+const Home = (data: Props) => {
 
   const handleSearch = (searchValue: string) => {
     console.log(`Vc esta buscando por: ${searchValue}`);
@@ -26,14 +27,14 @@ const Home = () => {
           </div>
           <div className={styles.headerTopRight}>
             <div className={styles.MenuBottom}>
-              <div className={styles.menuButtomLine}></div>
-              <div className={styles.menuButtomLine}></div>
-              <div className={styles.menuButtomLine}></div>
+              <div className={styles.menuButtomLine} style={{ backgroundColor: data.tenant.mainColor }}></div>
+              <div className={styles.menuButtomLine} style={{ backgroundColor: data.tenant.mainColor }}></div>
+              <div className={styles.menuButtomLine} style={{ backgroundColor: data.tenant.mainColor }}></div>
             </div>
           </div>
         </div>
         <div className={styles.headerBottom}>
-          <SearchInput mainColor="#fb9400" onSearch={handleSearch} />
+          <SearchInput mainColor={data.tenant.mainColor} onSearch={handleSearch} />
         </div>
       </header>
 
@@ -42,38 +43,59 @@ const Home = () => {
       <div className={styles.grid}>
         <ProductItem
           data={{ id: 1, image: '/tmp/burgue.png', categoryName: "Tradicional", name: "Texas Burguer", price: "R$ 25,50" }}
-          mainColor="#fb9400"
-          secondColor="#CCC"
+          mainColor={data.tenant.mainColor}
+          secondColor={data.tenant.secondColor}
         />
         <ProductItem
-          data={{ id: 2, image: '/tmp/burgue.png', categoryName: "Tradicional", name: "Texas Burguer", price: "R$ 25,50" }}
-          mainColor="#fb9400"
-          secondColor="#CCC"
+          data={{ id: 1, image: '/tmp/burgue.png', categoryName: "Tradicional", name: "Texas Burguer", price: "R$ 25,50" }}
+          mainColor={data.tenant.mainColor}
+          secondColor={data.tenant.secondColor}
         />
         <ProductItem
-          data={{ id: 3, image: '/tmp/burgue.png', categoryName: "Tradicional", name: "Texas Burguer", price: "R$ 25,50" }}
-          mainColor="#fb9400"
-          secondColor="#CCC"
+          data={{ id: 1, image: '/tmp/burgue.png', categoryName: "Tradicional", name: "Texas Burguer", price: "R$ 25,50" }}
+          mainColor={data.tenant.mainColor}
+          secondColor={data.tenant.secondColor}
         />
         <ProductItem
-          data={{ id: 4, image: '/tmp/burgue.png', categoryName: "Tradicional", name: "Texas Burguer", price: "R$ 25,50" }}
-          mainColor="#fb9400"
-          secondColor="#CCC"
+          data={{ id: 1, image: '/tmp/burgue.png', categoryName: "Tradicional", name: "Texas Burguer", price: "R$ 25,50" }}
+          mainColor={data.tenant.mainColor}
+          secondColor={data.tenant.secondColor}
         />
-        <ProductItem
-          data={{ id: 5, image: '/tmp/burgue.png', categoryName: "Tradicional", name: "Texas Burguer", price: "R$ 25,50" }}
-          mainColor="#fb9400"
-          secondColor="#CCC"
-        />
-        <ProductItem
-          data={{ id: 6, image: '/tmp/burgue.png', categoryName: "Tradicional", name: "Texas Burguer", price: "R$ 25,50" }}
-          mainColor="#fb9400"
-          secondColor="#CCC"
-        />
-
       </div>
     </div>
   );
 };
 
 export default Home;
+
+type Props = {
+  tenant: getTenantResponse;
+}
+
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { tenant: tenantSlug } = context.query;
+  const api = useApi();
+
+  // get tenant
+
+  const tenant = await api.getTenant(tenantSlug as string);
+
+  if (!tenant) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false
+      }
+    }
+  }
+
+  return {
+    props: {
+      tenant
+    }
+  }
+}
+
+
+
