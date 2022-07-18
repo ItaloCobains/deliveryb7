@@ -3,7 +3,7 @@ import styles from "./../../styles/Home.module.css";
 import { Banner } from "../../components/Banner"
 import { SearchInput } from "../../components/SearchInput";
 import { ProductItem } from '../../components/ProductItem';
-import { getTenantResponse, useApi } from "../../libs/useApi";
+import { getTenantResponse, UseApi } from "../../libs/useApi";
 import { GetServerSideProps } from "next";
 
 
@@ -75,7 +75,7 @@ type Props = {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { tenant: tenantSlug } = context.query;
-  const api = useApi();
+  const api = UseApi();
 
   // get tenant
 
